@@ -26,15 +26,17 @@ export default function Home({todo}) {
       setTodo(data)
   })
 
-  Loading Time - Increase
+  Loading Time - Increase 
   SEO Performance - Bad
   */
 
   /*
   In Server Side Rendering:
   There's no need of any loading indicator as the todo data is directly coming from the server
+
+  Something...
   */
- 
+
   return (
     <div>
       <h1>server side rendering</h1>
