@@ -1,45 +1,29 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function getServerSideProps (){
-  let request = await fetch("https://jsonplaceholder.typicode.com/todos")
-  let data = await request.json();
+export default function Home() {
 
-  return {
-    props: {
-      todo: data
-    }
-  }
-}
-
-export default function Home({todo}) {
-  /*
-  PROBLEM STATEMENT
+  const [todo, setTodo] = useState([])
 
   useEffect(()=> {
-      let request = await fetch("https://jsonplaceholder.typicode.com/todos")
-      let data = await request.json();
+      const fetchData = async ()=>{
+        let request = await fetch("https://jsonplaceholder.typicode.com/todos")
+        let data = await request.json();
 
-      setTodo(data)
+        setTodo(data)
+      }
+
+      fetchData();
   })
-
-  Loading Time - Increase 
-  SEO Performance - Bad
-  */
-
-  /*
-  In Server Side Rendering:
-  There's no need of any loading indicator as the todo data is directly coming from the server
-
-  Something...
-  */
 
   return (
     <div>
-      <h1>server side rendering</h1>
+      <h1 className="text-4xl">Client Side Rendering</h1>
+      <hr />
+      
       {todo.length === 0 ? <h1>Loading</h1> : (
         <>
         {todo.map(item => (
